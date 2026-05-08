@@ -1,3 +1,16 @@
+# Fork Information
+
+This is a fork of Xee used with the [Jee](https://codeberg.org/neosloth/jee) command line tool
+
+## Changes
+This fork contains some modifications to backport XPath 4.0 functionality that is useful for working with json. These do not currently pass the official compliance tests.
+
+- Implemented array:build()
+- Implemented map:items()
+- fn:serialize() works on sequences when used with json
+- Implemented bin:encode-string() and bin:decode-string() from https://expath.org/spec/binary
+- Implemented fn:base64() and fn:base64d() as aliases for the above
+
 # Xee
 
 XML Execution Engine written in Rust.
