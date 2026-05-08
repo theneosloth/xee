@@ -7,7 +7,7 @@ pub const FN_NAMESPACE: &str = "http://www.w3.org/2005/xpath-functions";
 pub const XS_NAMESPACE: &str = "http://www.w3.org/2001/XMLSchema";
 const XML_NAMESPACE: &str = "http://www.w3.org/XML/1998/namespace";
 
-const STATIC_NAMESPACES: [(&str, &str); 7] = [
+const STATIC_NAMESPACES: [(&str, &str); 8] = [
     ("xs", XS_NAMESPACE),
     ("fn", FN_NAMESPACE),
     ("math", "http://www.w3.org/2005/xpath-functions/math"),
@@ -15,6 +15,7 @@ const STATIC_NAMESPACES: [(&str, &str); 7] = [
     ("array", "http://www.w3.org/2005/xpath-functions/array"),
     ("err", "http://www.w3.org/2005/xqt-errors"),
     ("output", "http://www.w3.org/2010/xslt-xquery-serialization"),
+    ("bin", "http://expath.org/ns/binary"),
 ];
 
 /// Static default namespaces.

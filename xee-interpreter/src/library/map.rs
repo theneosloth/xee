@@ -136,6 +136,16 @@ fn keys(map: function::Map) -> sequence::Sequence {
     map.keys().cloned().collect::<Vec<_>>().into()
 }
 
+#[xpath_fn("map:items($map as map(*)) as xs:anyAtomicType*")]
+fn items(map: function::Map) -> sequence::Sequence {
+    let mut result: Vec<sequence::Item> = Vec::with_capacity(map.len());
+    for (_, value) in map.entries() {
+        let val = value.clone().one().expect("Expected a single item in map");
+        result.push(val);
+    }
+    return result.into();
+}
+
 #[xpath_fn("map:contains($map as map(*), $key as xs:anyAtomicType) as xs:boolean")]
 fn contains(map: function::Map, key: atomic::Atomic) -> bool {
     map.get(&key).is_some()
@@ -234,5 +244,6 @@ pub(crate) fn static_function_descriptions() -> Vec<StaticFunctionDescription> {
         wrap_xpath_fn!(entry),
         wrap_xpath_fn!(remove),
         wrap_xpath_fn!(for_each),
+        wrap_xpath_fn!(items),
     ]
 }

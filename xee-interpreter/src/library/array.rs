@@ -158,6 +158,11 @@ fn filter(
     Ok(function::Array::new(result))
 }
 
+#[xpath_fn("array:build($input as item()*) as array(*)")]
+fn build(input: &sequence::Sequence) -> error::Result<function::Array> {
+    return input.to_array();
+}
+
 #[xpath_fn("array:fold-left($array as array(*), $zero as item()*, $function as function(item()*, item()*) as item()*) as item()*")]
 fn fold_left(
     interpreter: &mut Interpreter,
@@ -351,5 +356,6 @@ pub(crate) fn static_function_descriptions() -> Vec<StaticFunctionDescription> {
         wrap_xpath_fn!(sort2),
         wrap_xpath_fn!(sort3),
         wrap_xpath_fn!(flatten),
+        wrap_xpath_fn!(build),
     ]
 }

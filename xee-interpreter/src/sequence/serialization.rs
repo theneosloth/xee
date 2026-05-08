@@ -278,7 +278,11 @@ fn serialize_json_sequence(
     match arg {
         Sequence::One(item) => serialize_json_item(item.item(), parameters, xot),
         Sequence::Empty(_) => Ok(json::JsonValue::Null),
-        Sequence::Many(_) | Sequence::Range(_) => Err(error::Error::SERE0023),
+        Sequence::Many(_) | Sequence::Range(_) => serialize_json_array(
+            &arg.to_array().map_err(|_| error::Error::SERE0023)?,
+            parameters,
+            xot,
+        ),
     }
 }
 
